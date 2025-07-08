@@ -139,7 +139,24 @@
       max-width: 100%;
     }
   }
+	
+#qr-code canvas, #qr-code img {
+  border: 6px solid var(--gray-color);
+  border-radius: 12px;
+  padding: 10px;
+  background-color: var(--white-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
+	#qr-color {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid var(--gray-color);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+	
   #faq-section {
     display: none;
     margin-top: 1rem;
@@ -302,6 +319,9 @@ footer small{
   <div class="qr-left">
     <input type="text" id="redirect-name" placeholder="Nome file (es. redirect45)" />
     <input type="text" id="target-url" value="https://dolomitinordicski.com/" />
+<label for="qr-color">Colore QR Code:</label>
+<input type="color" id="qr-color" value="#0D4D5E" />
+	  
     <button onclick="generateQRCode()">Generate QR!</button>
   </div>
  <!-- QR Code + JSON Box -->
@@ -413,7 +433,19 @@ footer small{
 	
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+// === SELETTORE COLORE ===	
+const selectedColor = document.getElementById("qr-color").value;
 
+const qr = new QRCode(qrContainer, {
+  text: fullURL,
+  width: 256,
+  height: 256,
+  colorDark: selectedColor,
+  colorLight: "#FFFFFF",
+  correctLevel: QRCode.CorrectLevel.H
+});
+</script>
 <script>
 // === MODULO 1: QR CODE GENERATOR ===
 function generateQRCode() {
