@@ -256,8 +256,10 @@
       <th>Link di redirect</th>
       <th>Data creazione</th>
       <th>Ultima modifica</th>
-      <th>Anteprima QR</th> <!-- ✔ intestazione pulita -->
-      <th>Azioni</th>
+      <th>Anteprima QR</th>
+	 <th>Scarica PNG</th>  
+    	<th>Scarica SVG</th>   
+     <!-- non attivo   <th>Azioni</th>-->
     </tr>
   </thead>
   <tbody id="qr-table-body"></tbody>
@@ -459,20 +461,24 @@ async function caricaQRDaRegistro() {
   tabella.innerHTML = "";
 
   dati.forEach(item => {
-    const tr = document.createElement("tr");
-    const imgUrl = `https://dolomitinordicski.github.io/qrcodegen/qrCODE/${item.name}.png`;
+  const tr = document.createElement("tr");
 
-    tr.innerHTML = `
-      <td>${item.name}</td>
-      <td><a href="${item.redirect_url}" target="_blank">${item.redirect_url}</a></td>
-      <td>${new Date(item.created_at).toLocaleDateString()}</td>
-      <td>${new Date(item.updated_at).toLocaleDateString()}</td>
-      <td><img src="${imgUrl}" alt="QR" width="60" /></td>
-      <td><button onclick="alert('In futuro: elimina o modifica ${item.name}')">Azioni</button></td>
-    `;
-    tabella.appendChild(tr);
-  });
-}
+  const basePath = "https://dolomitinordicski.github.io/qrcodegen/qrCODE/";
+  const imgPng = `${basePath}${item.name}.png`;
+  const imgSvg = `${basePath}${item.name}.svg`;
+
+  tr.innerHTML = `
+    <td>${item.name}</td>
+    <td><a href="${item.redirect_url}" target="_blank">${item.redirect_url}</a></td>
+    <td>${new Date(item.created_at).toLocaleDateString()}</td>
+    <td>${new Date(item.updated_at).toLocaleDateString()}</td>
+    <td><img src="${imgPng}" alt="QR" width="60" /></td>
+    <td><a href="${imgPng}" download><button>PNG</button></a></td>
+    <td><a href="${imgSvg}" download><button>SVG</button></a></td>
+    <td><button onclick="alert('In futuro: elimina o modifica ${item.name}')">Azioni</button></td>
+  `;
+  tabella.appendChild(tr);
+});
 
 window.addEventListener("DOMContentLoaded", caricaQRDaRegistro);
 </script>
