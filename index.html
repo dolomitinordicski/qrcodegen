@@ -295,13 +295,14 @@ footer small{
 	
   <main class="container">
     <h1 class="section-title">DNS QR CODE GENERATOR</h1>
-    <p>Genera un QR che punta a un file redirect personalizzato<br>e visualizza anteprima, codice HTML e download.</p>
+    <p>Generate a QR code that points to a custom redirect file,
+<br>and preview the result, HTML code, and download options</p>
 <section>
 <div class="qr-layout">
   <div class="qr-left">
     <input type="text" id="redirect-name" placeholder="Nome file (es. redirect45)" />
     <input type="text" id="target-url" value="https://dolomitinordicski.com/" />
-    <button onclick="generateQRCode()">Genera QR + Mostra HTML</button>
+    <button onclick="generateQRCode()">Generate QR!</button>
   </div>
  <!-- QR Code + JSON Box -->
 <div class="qr-right">
@@ -310,24 +311,24 @@ footer small{
 </section>
 	  <section>
   <div id="json-output" style="display:none;">
-    <h3>📄 JSON Entry</h3>
+    <h3>📄 JSON register Entry</h3>
     <pre id="json-box"></pre>
-    <button onclick="copyJSON()">📋 Copia JSON</button>
+    <button onclick="copyJSON()">📋 Copy JSON</button>
   </div>
 
   <div id="qr-preview-controls" style="display: none;">
-    <button id="download-png">Scarica PNG</button>
-    <button id="download-svg">Scarica SVG</button>
-    <button id="show-html">Mostra codice HTML</button>
+    <button id="download-png">Dowload PNG</button>
+    <button id="download-svg">Download SVG</button>
+    <button id="show-html">Show me the HTML</button>
   </div>
 </section>
     <div id="html-modal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
       width:90%; max-width:700px; background:white; border:1px solid var(--gray-color); padding:1rem; z-index:1000; box-shadow:0 0 20px rgba(0,0,0,0.2);">
-      <h2 style="color: var(--third-color);">Codice HTML del redirect</h2>
+      <h2 style="color: var(--third-color);">Redirect HTML code fr dynamic QR CODE</h2>
       <textarea id="html-output" style="width:100%; height:200px; font-family:monospace; font-size:14px;"></textarea>
       <br/>
-      <button onclick="copyHTML()">Copia codice</button>
-      <button onclick="closeModal()">Chiudi</button>
+      <button onclick="copyHTML()">Copy HTML</button>
+      <button onclick="closeModal()">Close</button>
     </div>
 
     <div id="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
@@ -335,18 +336,18 @@ footer small{
 	  
 <!-- Sezione: QR Code generati -->
 <section id="qr-log" class="container">
-  <h2>QR Code generati</h2>
+  <h2>Generated QR Codes</h2>
 <table>
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Link di redirect</th>
-      <th>Data creazione</th>
-      <th>Ultima modifica</th>
-      <th>Anteprima QR</th>
-	 <th>Scarica PNG</th>  
-    	<th>Scarica SVG</th>   
-    <th>Azioni</th>
+      <th>Name</th>
+      <th>Redirect LINK</th>
+      <th>Date of creation</th>
+      <th>Last Updated</th>
+      <th>Preview QR</th>
+	 <th>Dwnolad PNG</th>  
+    	<th>Download SVG</th>   
+    <th>Action</th>
     </tr>
   </thead>
   <tbody id="qr-table-body"></tbody>
@@ -358,30 +359,9 @@ footer small{
     <button onclick="toggleFaq()">📄 FAQ</button>
 
     <div id="faq-section">
-      <h2>ℹ️ Istruzioni per l'utilizzo futuro / Anleitung für die künftige Nutzung</h2>
+      <h2>ℹ️ Istruzioni per l'utilizzo / Anleitung für die Nutzung</h2>
 
-      <h3>Isitruzioni</h3>
-      <ul>
-        <li>La repository esistente è: <code>qrcodegen</code> su GitHub.</li>
-        <li>Per ogni nuovo QR:
-          <ul>
-            <li>Inserisci un nome (es. <code>redirect45</code>) e lascia o modifica il link.</li>
-            <li>Il QR generato punta a <code>https://tuo-username.github.io/qrcodegen/redirect45.html</code></li>
-            <li>Clicca su “Mostra codice HTML”.</li>
-            <li>Copia il codice mostrato, apri un editor (es. Notepad), incolla e salva come <code>redirect45.html</code>.</li>
-            <li>Carica questo file nella repository <code>qrcodegen</code>.</li>
-          </ul>
-        </li>
-        <li>Per modificare la destinazione del redirect:
-          <ul>
-            <li>Apri il file HTML corrispondente (es. <code>redirect45.html</code>).</li>
-            <li>Sostituisci il link dentro <code>window.location.href = "..."</code></li>
-            <li>Salva e conferma il file aggiornato su GitHub.</li>
-          </ul>
-        </li>
-      </ul>
-
-      <h3>Einleitung</h3>
+      <h3>EINLEITUNG</h3>
       <ul>
         <li>Das bestehende Repository heißt <code>qrcodegen</code>.</li>
         <li>Für jeden neuen QR-Code:
@@ -398,6 +378,26 @@ footer small{
             <li>Die Datei (z. B. <code>redirect45.html</code>) öffnen.</li>
             <li>Den Link in <code>window.location.href = "..."</code> anpassen.</li>
             <li>Die Datei speichern und erneut hochladen.</li>
+          </ul>
+        </li>
+      </ul>
+	     <h3>ISTRUZIONI</h3>
+      <ul>
+        <li>La repository esistente è: <code>qrcodegen</code> su GitHub.</li>
+        <li>Per ogni nuovo QR:
+          <ul>
+            <li>Inserisci un nome (es. <code>redirect45</code>) e lascia o modifica il link.</li>
+            <li>Il QR generato punta a <code>https://tuo-username.github.io/qrcodegen/redirect45.html</code></li>
+            <li>Clicca su “Mostra codice HTML”.</li>
+            <li>Copia il codice mostrato, apri un editor (es. Notepad), incolla e salva come <code>redirect45.html</code>.</li>
+            <li>Carica questo file nella repository <code>qrcodegen</code>.</li>
+          </ul>
+        </li>
+        <li>Per modificare la destinazione del redirect:
+          <ul>
+            <li>Apri il file HTML corrispondente (es. <code>redirect45.html</code>).</li>
+            <li>Sostituisci il link dentro <code>window.location.href = "..."</code></li>
+            <li>Salva e conferma il file aggiornato su GitHub.</li>
           </ul>
         </li>
       </ul>
@@ -562,7 +562,7 @@ async function caricaQRDaRegistro() {
     <td><img src="${imgPng}" alt="QR" width="60" /></td>
     <td><a href="${imgPng}" download><button>PNG</button></a></td>
     <td><a href="${imgSvg}" download><button>SVG</button></a></td>
-    <td><button onclick="alert('In futuro: elimina o modifica ${item.name}')">Azioni</button></td>
+    <td><button onclick="alert('In futuro: elimina o modifica ${item.name}')">Action</button></td>
   `;
   tabella.appendChild(tr);
 });
