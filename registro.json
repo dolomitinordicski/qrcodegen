@@ -6,4 +6,11 @@
   "created_at": "2025-07-08T11:57:16.359Z",
   "updated_at": "2025-07-08T11:57:16.359Z"
 }
+  {
+  "name": "Livemap",
+  "redirect_url": "https://dolomitinordicski.github.io/qrcodegen/Livemap.html",
+  "qr_image": "https://dolomitinordicski.github.io/qrcodegen/qrCODE/Livemap.svg",
+  "created_at": "2025-07-08T13:50:37.916Z",
+  "updated_at": "2025-07-08T13:50:37.916Z"
+}
 ]
