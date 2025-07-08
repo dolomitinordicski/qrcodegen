@@ -215,19 +215,24 @@
     <input type="text" id="target-url" value="https://dolomitinordicski.com/" />
     <button onclick="generateQRCode()">Genera QR + Mostra HTML</button>
   </div>
-  <div class="qr-right">
-    <div id="qr-code"></div>
-	  <div id="json-output" style="display:none;">
-  <h3>📄 JSON Entry</h3>
-  <pre id="json-box"></pre>
-</div>
-    <div id="qr-preview-controls" style="display: none;">
-      <button id="download-png">Scarica PNG</button>
-      <button id="download-svg">Scarica SVG</button>
-      <button id="show-html">Mostra codice HTML</button>
-    </div>
+ <!-- QR Code + JSON Box -->
+<div class="qr-right">
+  <div id="qr-code"></div>
+
+  <div id="json-output" style="display:none;">
+    <h3>📄 JSON Entry</h3>
+    <pre id="json-box"></pre>
+    <button onclick="copyJSON()">📋 Copia JSON</button>
+  </div>
+
+  <div id="qr-preview-controls" style="display: none;">
+    <button id="download-png">Scarica PNG</button>
+    <button id="download-svg">Scarica SVG</button>
+    <button id="show-html">Mostra codice HTML</button>
   </div>
 </div>
+ 
+ 
     <div id="qr-code"></div>
 
     <div id="qr-preview-controls" style="margin-top: 1rem; display: none;">
@@ -358,7 +363,6 @@
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <script>
   function generateQRCode() {
     const name = document.getElementById("redirect-name").value.trim();
@@ -386,10 +390,10 @@
 
     createRedirectCode(name, target);
 
-    // Mostra JSON
+    // JSON Preview
     const jsonData = {
       name: name,
-      redirect_url: `https://dolomitinordicski.com/${name}.html`,
+      redirect_url: fullURL,
       qr_image: `https://dolomitinordicski.github.io/qrcodegen/${name}.svg`,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
@@ -398,7 +402,7 @@
     document.getElementById("json-output").style.display = "block";
 
     setTimeout(() => {
-      document.getElementById("qr-preview-controls").style.display = "block";
+      document.getElementById("qr-preview-controls").style.display = "flex";
 
       document.getElementById("download-png").onclick = () => {
         const canvas = qrContainer.querySelector("canvas");
@@ -432,7 +436,7 @@
 <head>
   <meta charset="UTF-8">
   <title>${name}</title>
- <script>window.location.href = "${url}";<\/script>
+  <script>window.location.href = "${url}";<\/script>
 </head>
 <body>
   <p>Se non vieni reindirizzato, <a href="${url}">clicca qui</a>.</p>
@@ -453,6 +457,13 @@
     textarea.select();
     document.execCommand("copy");
     alert("Codice copiato negli appunti.");
+  }
+
+  function copyJSON() {
+    const jsonText = document.getElementById("json-box").textContent;
+    navigator.clipboard.writeText(jsonText).then(() => {
+      alert("JSON copiato negli appunti.");
+    });
   }
 
   function closeModal() {
