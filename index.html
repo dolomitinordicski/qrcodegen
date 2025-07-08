@@ -415,46 +415,6 @@ footer small{
 	
 <section style="margin-top: 4rem;">
   <div class="accordion">
-	  <div class="accordion-header" onclick="toggleAccordion('faq-de')">
-      🇩🇪 Anleitung für die Nutzung
-      <span id="arrow-faq-de">▼</span>
-    </div>
-    <div class="accordion-body" id="faq-de">
-      <h3>ANLEITUNG (Nutzung über GitHub)</h3>
-      <ul>
-        <li>Das öffentliche Repository auf GitHub heißt: <code>qrcodegen</code>.</li>
-        <li>Für jeden neuen QR-Code:
-          <ul>
-            <li>Name eingeben (z. B. <code>Livemap</code>) und Ziel-Link festlegen.</li>
-            <li>Das System erzeugt automatisch:
-              <ul>
-                <li>🔗 HTML-Datei mit Weiterleitung</li>
-                <li>🖼️ SVG- und PNG-Dateien des QR-Codes</li>
-                <li>🧾 JSON-Eintrag für das Register</li>
-              </ul>
-            </li>
-            <li>HTML-Code kopieren, auf GitHub <strong>eine neue Datei</strong> erstellen (über <em>"Add file > Create new file"</em>) und z. B. als <code>Livemap.html</code> speichern.</li>
-            <li>Die Dateien <code>Livemap.svg</code> und <code>Livemap.png</code> in den Ordner <code>qrCode</code> hochladen.</li>
-            <li>Öffne <code>registro.json</code> im Hauptverzeichnis und füge den neuen JSON-Eintrag ein (durch Komma getrennt, falls nötig).</li>
-            <li>Commit auf GitHub bestätigen.</li>
-          </ul>
-        </li>
-        <li>Der finale Link ist z. B.:
-          <ul>
-            <li><code>https://dein-benutzername.github.io/qrcodegen/Livemap.html</code></li>
-          </ul>
-        </li>
-        <li>Um den Redirect später zu ändern:
-          <ul>
-            <li>Öffne die Datei <code>Livemap.html</code> direkt auf GitHub.</li>
-            <li>Ändere die URL in <code>window.location.href = "..."</code>.</li>
-            <li>Speichern und Änderungen bestätigen.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-
     <div class="accordion-header" onclick="toggleAccordion('faq-it')">
       🇮🇹 Istruzioni per l'utilizzo
       <span id="arrow-faq-it">▼</span>
@@ -493,8 +453,48 @@ footer small{
         </li>
       </ul>
     </div>
-	</div>
+
+    <div class="accordion-header" onclick="toggleAccordion('faq-de')">
+      🇩🇪 Anleitung für die Nutzung
+      <span id="arrow-faq-de">▼</span>
+    </div>
+    <div class="accordion-body" id="faq-de">
+      <h3>ANLEITUNG (Nutzung über GitHub)</h3>
+      <ul>
+        <li>Das öffentliche Repository auf GitHub heißt: <code>qrcodegen</code>.</li>
+        <li>Für jeden neuen QR-Code:
+          <ul>
+            <li>Name eingeben (z. B. <code>Livemap</code>) und Ziel-Link festlegen.</li>
+            <li>Das System erzeugt automatisch:
+              <ul>
+                <li>🔗 HTML-Datei mit Weiterleitung</li>
+                <li>🖼️ SVG- und PNG-Dateien des QR-Codes</li>
+                <li>🧾 JSON-Eintrag für das Register</li>
+              </ul>
+            </li>
+            <li>HTML-Code kopieren, auf GitHub <strong>eine neue Datei</strong> erstellen (über <em>"Add file > Create new file"</em>) und z. B. als <code>Livemap.html</code> speichern.</li>
+            <li>Die Dateien <code>Livemap.svg</code> und <code>Livemap.png</code> in den Ordner <code>qrCode</code> hochladen.</li>
+            <li>Öffne <code>registro.json</code> im Hauptverzeichnis und füge den neuen JSON-Eintrag ein (durch Komma getrennt, falls nötig).</li>
+            <li>Commit auf GitHub bestätigen.</li>
+          </ul>
+        </li>
+        <li>Der finale Link ist z. B.:
+          <ul>
+            <li><code>https://dein-benutzername.github.io/qrcodegen/Livemap.html</code></li>
+          </ul>
+        </li>
+        <li>Um den Redirect später zu ändern:
+          <ul>
+            <li>Öffne die Datei <code>Livemap.html</code> direkt auf GitHub.</li>
+            <li>Ändere die URL in <code>window.location.href = "..."</code>.</li>
+            <li>Speichern und Änderungen bestätigen.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
+
 <script>
   function toggleAccordion(id) {
     const body = document.getElementById(id);
