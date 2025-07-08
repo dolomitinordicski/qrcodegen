@@ -12,5 +12,12 @@
   "qr_image": "https://dolomitinordicski.github.io/qrcodegen/qrCODE/Livemap.svg",
   "created_at": "2025-07-08T13:50:37.916Z",
   "updated_at": "2025-07-08T13:50:37.916Z"
+};
+  {
+  "name": "Events",
+  "redirect_url": "https://dolomitinordicski.github.io/qrcodegen/Events.html",
+  "qr_image": "https://dolomitinordicski.github.io/qrcodegen/qrCODE/Events.svg",
+  "created_at": "2025-07-08T14:50:13.106Z",
+  "updated_at": "2025-07-08T14:50:13.106Z"
 }
 ]
