@@ -1,9 +1,9 @@
 [
 {
   "name": "tickets",
-  "redirect_url": "https://dolomitinordicski.com/tickets.html",
+  "redirect_url": "https://dolomitinordicski.github.io/qrcodegen/tickets.html",
   "qr_image": "https://dolomitinordicski.github.io/qrcodegen/tickets.svg",
-  "created_at": "2025-07-08T10:58:57.773Z",
-  "updated_at": "2025-07-08T10:58:57.773Z"
+  "created_at": "2025-07-08T11:50:02.600Z",
+  "updated_at": "2025-07-08T11:50:02.600Z"
 }
 ]
