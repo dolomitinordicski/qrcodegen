@@ -1,16 +1,9 @@
 [
-  {
-    "name": "ticket001",
-    "redirect_url": "https://dolomitinordicski.com/ticket001.html",
-    "qr_image": "https://dolomitinordicski.github.io/qrcodegen/ticket001.svg",
-    "created_at": "2025-07-08T10:35:33.127055",
-    "updated_at": "2025-07-08T10:35:33.127067"
-  },
-  {
-    "name": "eventDNS2025",
-    "redirect_url": "https://dolomitinordicski.com/eventDNS2025.html",
-    "qr_image": "https://dolomitinordicski.github.io/qrcodegen/eventDNS2025.svg",
-    "created_at": "2025-07-08T10:35:33.127070",
-    "updated_at": "2025-07-08T10:35:33.127073"
-  }
+{
+  "name": "tickets",
+  "redirect_url": "https://dolomitinordicski.com/tickets.html",
+  "qr_image": "https://dolomitinordicski.github.io/qrcodegen/tickets.svg",
+  "created_at": "2025-07-08T10:58:57.773Z",
+  "updated_at": "2025-07-08T10:58:57.773Z"
+}
 ]
