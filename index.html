@@ -421,9 +421,9 @@ document.getElementById("show-html").onclick = () => {
 function copyHTML() {
   const textarea = document.getElementById("html-output");
   textarea.select();
-  document.execCommand("copy");
+navigator.clipboard.writeText(textarea.value).then(() => {
   alert("Codice copiato negli appunti.");
-}
+});
 
 function copyJSON() {
   const jsonText = document.getElementById("json-box").textContent;
