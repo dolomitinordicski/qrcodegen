@@ -202,10 +202,6 @@
   word-break: break-word;
 }  
   </style>
-
-
-
-
 	
 </head>
 <body>
@@ -317,7 +313,13 @@
       </ul>
     </div>
   </section>
-
+  <script>
+    function toggleFaq() {
+      const section = document.getElementById("faq-section");
+      section.style.display = section.style.display === "none" ? "block" : "none";
+    }
+  </script>
+	
 <script>
 // === MODULO 1: QR CODE GENERATOR ===
 function generateQRCode() {
