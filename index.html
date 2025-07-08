@@ -179,8 +179,28 @@
   background: none;
   padding: 6px;
 }
+#json-output {
+  background-color: #f7f7f7;
+  border: 1px solid var(--gray-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 2rem;
+  text-align: left;
+  max-height: 300px;
+  overflow: auto;
+}
 
-	  
+#json-output h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+#json-box {
+  font-family: monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}  
   </style>
 </head>
 <body>
@@ -197,6 +217,10 @@
   </div>
   <div class="qr-right">
     <div id="qr-code"></div>
+	  <div id="json-output" style="display:none;">
+  <h3>📄 JSON Entry</h3>
+  <pre id="json-box"></pre>
+</div>
     <div id="qr-preview-controls" style="display: none;">
       <button id="download-png">Scarica PNG</button>
       <button id="download-svg">Scarica SVG</button>
