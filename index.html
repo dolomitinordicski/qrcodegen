@@ -158,14 +158,50 @@
   cursor: pointer;
 }
 	
-  #faq-section {
-    display: none;
-    margin-top: 1rem;
-    text-align: left;
-    padding: 1rem;
-    background-color: var(--white-color);
-    border-radius: 12px;
-  }
+.accordion {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  border: 1px solid var(--gray-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background-color: var(--third-color);
+  color: white;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: var(--primary-color);
+}
+
+.accordion-body {
+  display: none;
+  padding: 1rem;
+  background-color: var(--gray-color);
+  color: var(--dark-color);
+  text-align: left;
+}
+
+.accordion-body ul {
+  padding-left: 1.5rem;
+}
+
+.accordion-body code {
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
 
   h2 {
     color: var(--third-color);
