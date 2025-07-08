@@ -296,7 +296,7 @@ footer small{
   <main class="container">
     <h1 class="section-title">DNS QR CODE GENERATOR</h1>
     <p>Genera un QR che punta a un file redirect personalizzato<br>e visualizza anteprima, codice HTML e download.</p>
-
+<section>
 <div class="qr-layout">
   <div class="qr-left">
     <input type="text" id="redirect-name" placeholder="Nome file (es. redirect45)" />
@@ -306,7 +306,9 @@ footer small{
  <!-- QR Code + JSON Box -->
 <div class="qr-right">
   <div id="qr-code"></div>
-
+</div>
+</section>
+	  <section>
   <div id="json-output" style="display:none;">
     <h3>📄 JSON Entry</h3>
     <pre id="json-box"></pre>
@@ -318,8 +320,7 @@ footer small{
     <button id="download-svg">Scarica SVG</button>
     <button id="show-html">Mostra codice HTML</button>
   </div>
-</div>
-
+</section>
     <div id="html-modal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
       width:90%; max-width:700px; background:white; border:1px solid var(--gray-color); padding:1rem; z-index:1000; box-shadow:0 0 20px rgba(0,0,0,0.2);">
       <h2 style="color: var(--third-color);">Codice HTML del redirect</h2>
