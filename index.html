@@ -331,96 +331,108 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-  <script>
-    function generateQRCode() {
-      const name = document.getElementById("redirect-name").value.trim();
-      const target = document.getElementById("target-url").value.trim();
-      const qrContainer = document.getElementById("qr-code");
-      qrContainer.innerHTML = "";
-      document.getElementById("qr-preview-controls").style.display = "none";
+<script>
+  function generateQRCode() {
+    const name = document.getElementById("redirect-name").value.trim();
+    const target = document.getElementById("target-url").value.trim();
+    const qrContainer = document.getElementById("qr-code");
+    qrContainer.innerHTML = "";
+    document.getElementById("qr-preview-controls").style.display = "none";
 
-      if (!name || !target) {
-        alert("Inserisci un nome file e una destinazione valida.");
-        return;
-      }
-
-      const baseURL = "https://dolomitinordicski.github.io/qrcodegen/";
-      const fullURL = baseURL + name + ".html";
-
-      const qr = new QRCode(qrContainer, {
-        text: fullURL,
-        width: 256,
-        height: 256,
-        colorDark: "#0D4D5E",
-        colorLight: "#FFFFFF",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-
-      createRedirectCode(name, target);
-
-      setTimeout(() => {
-        document.getElementById("qr-preview-controls").style.display = "block";
-
-        document.getElementById("download-png").onclick = () => {
-          const canvas = qrContainer.querySelector("canvas");
-          const link = document.createElement("a");
-          link.href = canvas.toDataURL("image/png");
-          link.download = `${name}.png`;
-          link.click();
-        };
-
-        document.getElementById("download-svg").onclick = () => {
-          const svg = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256">
-              <foreignObject width="100%" height="100%">
-                ${new XMLSerializer().serializeToString(qrContainer)}
-              </foreignObject>
-            </svg>
-          `;
-          const blob = new Blob([svg], { type: "image/svg+xml" });
-          const link = document.createElement("a");
-          link.href = URL.createObjectURL(blob);
-          link.download = `${name}.svg`;
-          link.click();
-        };
-      }, 300);
+    if (!name || !target) {
+      alert("Inserisci un nome file e una destinazione valida.");
+      return;
     }
 
-    function createRedirectCode(name, url) {
-      const html = `
+    const baseURL = "https://dolomitinordicski.github.io/qrcodegen/";
+    const fullURL = baseURL + name + ".html";
+
+    const qr = new QRCode(qrContainer, {
+      text: fullURL,
+      width: 256,
+      height: 256,
+      colorDark: "#0D4D5E",
+      colorLight: "#FFFFFF",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    createRedirectCode(name, target);
+
+    // Mostra JSON
+    const jsonData = {
+      name: name,
+      redirect_url: `https://dolomitinordicski.com/${name}.html`,
+      qr_image: `https://dolomitinordicski.github.io/qrcodegen/${name}.svg`,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
+    document.getElementById("json-box").textContent = JSON.stringify(jsonData, null, 2);
+    document.getElementById("json-output").style.display = "block";
+
+    setTimeout(() => {
+      document.getElementById("qr-preview-controls").style.display = "block";
+
+      document.getElementById("download-png").onclick = () => {
+        const canvas = qrContainer.querySelector("canvas");
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = `${name}.png`;
+        link.click();
+      };
+
+      document.getElementById("download-svg").onclick = () => {
+        const svg = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256">
+            <foreignObject width="100%" height="100%">
+              ${new XMLSerializer().serializeToString(qrContainer)}
+            </foreignObject>
+          </svg>
+        `;
+        const blob = new Blob([svg], { type: "image/svg+xml" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = `${name}.svg`;
+        link.click();
+      };
+    }, 300);
+  }
+
+  function createRedirectCode(name, url) {
+    const html = `
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <title>${name}</title>
-  <script>window.location.href = "${url}";<\/script>
+  <script>window.location.href = "${url}";</script>
 </head>
 <body>
   <p>Se non vieni reindirizzato, <a href="${url}">clicca qui</a>.</p>
 </body>
 </html>`.trim();
 
-      window.currentRedirectHTML = html;
-    }
+    window.currentRedirectHTML = html;
+  }
 
-    document.getElementById("show-html").onclick = () => {
-      document.getElementById("html-output").value = window.currentRedirectHTML || "";
-      document.getElementById("html-modal").style.display = "block";
-      document.getElementById("modal-overlay").style.display = "block";
-    };
+  document.getElementById("show-html").onclick = () => {
+    document.getElementById("html-output").value = window.currentRedirectHTML || "";
+    document.getElementById("html-modal").style.display = "block";
+    document.getElementById("modal-overlay").style.display = "block";
+  };
 
-    function copyHTML() {
-      const textarea = document.getElementById("html-output");
-      textarea.select();
-      document.execCommand("copy");
-      alert("Codice copiato negli appunti.");
-    }
+  function copyHTML() {
+    const textarea = document.getElementById("html-output");
+    textarea.select();
+    document.execCommand("copy");
+    alert("Codice copiato negli appunti.");
+  }
 
-    function closeModal() {
-      document.getElementById("html-modal").style.display = "none";
-      document.getElementById("modal-overlay").style.display = "none";
-    }
-  </script>
+  function closeModal() {
+    document.getElementById("html-modal").style.display = "none";
+    document.getElementById("modal-overlay").style.display = "none";
+  }
+</script>
+
 
 </body>
 </html>
