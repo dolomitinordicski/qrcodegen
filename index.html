@@ -231,6 +231,45 @@
     white-space: pre-wrap;
     word-break: break-word;
   }
+
+	/* ---------- FOOTER 2.0 ------------------------------------------- */
+footer{
+  position:relative;
+  z-index:2000;
+  width:100%;
+  padding:60px 20px 40px;
+  color:#fff;
+  text-align:center;
+
+  /* sfumatura diagonale */
+  background:linear-gradient(135deg,
+              var(--third-color) 0%,
+              var(--primary-color) 100%);
+}
+
+
+/* link testo */
+footer a{
+  color:var(--secondary-color);
+  font-weight:600;
+  transition:color .3s;
+}
+footer a:hover{color:#fff;}
+
+
+/* ▸ copyright più piccolo */
+footer small{
+  display:block;
+  font-size:.8rem;
+  opacity:.75;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:768px){
+  footer{padding:40px 12px;}
+  footer::before{top:-40px;height:40px;}
+}
+
 </style>
 
 
@@ -523,6 +562,8 @@ window.addEventListener("DOMContentLoaded", caricaQRDaRegistro);
 
 
 
-
+	 <footer>
+	   &copy; 2025 Dolomiti NordicSki. All rights reserved.
+    </footer>
 </body>
 </html>
