@@ -415,60 +415,84 @@ footer small{
 	
 <section style="margin-top: 4rem;">
   <div class="accordion">
-    <div class="accordion-header" onclick="toggleAccordion('faq-it')">
-      🇮🇹 Istruzioni per l'utilizzo
-      <span id="arrow-faq-it">▼</span>
-    </div>
-    <div class="accordion-body" id="faq-it">
-      <h3>ISTRUZIONI</h3>
-      <ul>
-        <li>La repository esistente è: <code>qrcodegen</code> su GitHub.</li>
-        <li>Per ogni nuovo QR:
-          <ul>
-            <li>Inserisci un nome (es. <code>redirect45</code>) e lascia o modifica il link.</li>
-            <li>Il QR generato punta a <code>https://tuo-username.github.io/qrcodegen/redirect45.html</code></li>
-            <li>Clicca su “Mostra codice HTML”.</li>
-            <li>Copia il codice, apri un editor (es. Notepad), salva come <code>redirect45.html</code>.</li>
-            <li>Carica il file nella repository <code>qrcodegen</code>.</li>
-          </ul>
-        </li>
-        <li>Per modificare il link di destinazione:
-          <ul>
-            <li>Apri il file HTML (es. <code>redirect45.html</code>).</li>
-            <li>Sostituisci il link dentro <code>window.location.href = "..."</code></li>
-            <li>Salva e carica di nuovo su GitHub.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <div class="accordion-header" onclick="toggleAccordion('faq-de')">
+	  <div class="accordion-header" onclick="toggleAccordion('faq-de')">
       🇩🇪 Anleitung für die Nutzung
       <span id="arrow-faq-de">▼</span>
     </div>
     <div class="accordion-body" id="faq-de">
-      <h3>EINLEITUNG</h3>
+      <h3>ANLEITUNG (Nutzung über GitHub)</h3>
       <ul>
-        <li>Das bestehende Repository heißt <code>qrcodegen</code>.</li>
+        <li>Das öffentliche Repository auf GitHub heißt: <code>qrcodegen</code>.</li>
         <li>Für jeden neuen QR-Code:
           <ul>
-            <li>Name eingeben (z. B. <code>redirect45</code>) und Ziel-Link prüfen oder ändern.</li>
-            <li>Der QR verweist auf <code>https://dein-benutzername.github.io/qrcodegen/redirect45.html</code></li>
-            <li>Auf „HTML anzeigen“ klicken.</li>
-            <li>Code kopieren, in einen Texteditor einfügen, als <code>redirect45.html</code> speichern.</li>
-            <li>Datei in das GitHub-Repo <code>qrcodegen</code> hochladen.</li>
+            <li>Name eingeben (z. B. <code>Livemap</code>) und Ziel-Link festlegen.</li>
+            <li>Das System erzeugt automatisch:
+              <ul>
+                <li>🔗 HTML-Datei mit Weiterleitung</li>
+                <li>🖼️ SVG- und PNG-Dateien des QR-Codes</li>
+                <li>🧾 JSON-Eintrag für das Register</li>
+              </ul>
+            </li>
+            <li>HTML-Code kopieren, auf GitHub <strong>eine neue Datei</strong> erstellen (über <em>"Add file > Create new file"</em>) und z. B. als <code>Livemap.html</code> speichern.</li>
+            <li>Die Dateien <code>Livemap.svg</code> und <code>Livemap.png</code> in den Ordner <code>qrCode</code> hochladen.</li>
+            <li>Öffne <code>registro.json</code> im Hauptverzeichnis und füge den neuen JSON-Eintrag ein (durch Komma getrennt, falls nötig).</li>
+            <li>Commit auf GitHub bestätigen.</li>
           </ul>
         </li>
-        <li>Um das Ziel später zu ändern:
+        <li>Der finale Link ist z. B.:
           <ul>
-            <li>Datei öffnen (z. B. <code>redirect45.html</code>).</li>
-            <li>Link in <code>window.location.href = "..."</code> anpassen.</li>
-            <li>Speichern und erneut hochladen.</li>
+            <li><code>https://dein-benutzername.github.io/qrcodegen/Livemap.html</code></li>
+          </ul>
+        </li>
+        <li>Um den Redirect später zu ändern:
+          <ul>
+            <li>Öffne die Datei <code>Livemap.html</code> direkt auf GitHub.</li>
+            <li>Ändere die URL in <code>window.location.href = "..."</code>.</li>
+            <li>Speichern und Änderungen bestätigen.</li>
           </ul>
         </li>
       </ul>
     </div>
   </div>
+
+    <div class="accordion-header" onclick="toggleAccordion('faq-it')">
+      🇮🇹 Istruzioni per l'utilizzo
+      <span id="arrow-faq-it">▼</span>
+    </div>
+    <div class="accordion-body" id="faq-it">
+      <h3>ISTRUZIONI (uso di GitHub)</h3>
+      <ul>
+        <li>La repository pubblica su GitHub si chiama: <code>qrcodegen</code>.</li>
+        <li>Per ogni nuovo QR generato:
+          <ul>
+            <li>Inserisci un nome (es. <code>Livemap</code>) e il link di destinazione.</li>
+            <li>Il sistema genera automaticamente:
+              <ul>
+                <li>🔗 il codice HTML del redirect</li>
+                <li>🖼️ l'immagine SVG e PNG del QR Code</li>
+                <li>🧾 l’entry JSON per il file di registro</li>
+              </ul>
+            </li>
+            <li>Copia il codice HTML e incollalo in un <strong>nuovo file</strong> creato su GitHub (clic su <em>"Add file > Create new file"</em>) e salvalo come <code>Livemap.html</code>.</li>
+            <li>Carica i file <code>Livemap.svg</code> e <code>Livemap.png</code> nella cartella <code>qrCode</code> della repository.</li>
+            <li>Apri il file <code>registro.json</code> nella root della repository e aggiungi la nuova entry JSON, separata da virgola se necessario.</li>
+            <li>Conferma il commit su GitHub.</li>
+          </ul>
+        </li>
+        <li>Il link finale sarà del tipo:
+          <ul>
+            <li><code>https://tuo-username.github.io/qrcodegen/Livemap.html</code></li>
+          </ul>
+        </li>
+        <li>Per modificare in seguito il redirect:
+          <ul>
+            <li>Modifica il file <code>Livemap.html</code> direttamente su GitHub.</li>
+            <li>Aggiorna il valore di <code>window.location.href = "..."</code>.</li>
+            <li>Salva e conferma le modifiche.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 </section>
 <script>
   function toggleAccordion(id) {
