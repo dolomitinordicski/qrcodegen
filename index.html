@@ -5,208 +5,232 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
   <title>DNS QR CODE GENERATOR</title>
-  <style>
-    :root {
-      --primary-color:   #0D4D5E;
-      --secondary-color: #AAD0D1;
-      --third-color:     #417483;
-      --white-color:     #FFFFFF;
-      --dark-color:      #313131;
-      --gray-color:      #DDDDDD;
-      --primary-color-dark: #08343f;
-    }
+<style>
+  :root {
+    --primary-color:   #0D4D5E;
+    --secondary-color: #AAD0D1;
+    --third-color:     #417483;
+    --white-color:     #FFFFFF;
+    --dark-color:      #313131;
+    --gray-color:      #DDDDDD;
+    --primary-color-dark: #08343f;
+  }
 
-    html, body {
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-weight: 700;
-      margin: 0;
-      padding-top: 10vh;
-      background-color: var(--white-color);
-      color: var(--dark-color);
-      text-align: center;
-    }
+  html, body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    padding-top: 10vh;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    text-align: center;
+  }
 
-    h1.section-title {
-      font-size: 3rem;
-      background: linear-gradient(to right, #0D4D5E, #AAD0D1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeIn 1s ease-out forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    input[type="text"] {
-      width: 80%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid var(--gray-color);
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    button {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 10px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    button:hover {
-      background-color: var(--primary-color-dark);
-      transform: scale(1.05);
-    }
-
-    #qr-code {
-      margin-top: 2rem;
-    }
-	
-	.qr-layout {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3rem;
-  margin-top: 2rem;
-}
-
-.qr-left,
-.qr-right {
-  flex: 1 1 300px;
-  max-width: 400px;
-}
-
-.qr-left input,
-.qr-left button {
-  display: block;
-  width: 100%;
-  margin: 0.5rem 0;
-}
-
-.qr-right #qr-code {
-  margin: 0 auto;
-}
-
-#qr-preview-controls,
-#show-html {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-  .qr-layout {
-    flex-direction: column;
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--white-color);
+    display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+  }
+
+  header img {
+    height: 50px;
+  }
+
+  h1.section-title {
+    font-size: 3rem;
+    background: linear-gradient(to right, #0D4D5E, #AAD0D1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  input[type="text"] {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid var(--gray-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  button:hover {
+    background-color: var(--primary-color-dark);
+    transform: scale(1.05);
+  }
+
+  #qr-code {
+    margin-top: 2rem;
+    gap: 3rem;
+    margin-top: 2rem;
   }
 
   .qr-left,
   .qr-right {
-    max-width: 100%;
+    flex: 1 1 300px;
+    max-width: 400px;
   }
-}
+
+  .qr-left input,
+  .qr-left button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .qr-right #qr-code {
+    margin: 0 auto;
+  }
+
+  #qr-preview-controls,
+  #show-html {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .qr-layout {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .qr-left,
+    .qr-right {
+      max-width: 100%;
+    }
+  }
+
   #faq-section {
-      display: none;
-      margin-top: 1rem;
-      text-align: left;
-      padding: 1rem;
-      background-color: var(--gray-color);
-      border-radius: 12px;
-    }
+    display: none;
+    margin-top: 1rem;
+    text-align: left;
+    padding: 1rem;
+    background-color: var(--gray-color);
+    border-radius: 12px;
+  }
 
-    h2 {
-      color: var(--third-color);
-    }
+  h2 {
+    color: var(--third-color);
+  }
 
-    ul {
-      padding-left: 1.2rem;
-    }
+  ul {
+    padding-left: 1.2rem;
+  }
 
-    code {
-      background: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
+  code {
+    background: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
 
-	  #qr-log table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 2rem;
-}
+  #qr-log table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
 
-#qr-log th, #qr-log td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--gray-color);
-  font-size: 15px;
-}
+  #qr-log th, #qr-log td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-color);
+    font-size: 15px;
+  }
 
-#qr-log th {
-  background-color: var(--primary-color);
-  color: white;
-}
+  #qr-log th {
+    background-color: var(--primary-color);
+    color: white;
+  }
 
-#qr-log tr:hover {
-  background-color: #f9f9f9;
-}
+  #qr-log tr:hover {
+    background-color: #f9f9f9;
+  }
 
-.qr-preview {
-  width: 80px;
-  height: auto;
-  border: 1px solid var(--gray-color);
-  border-radius: 4px;
-}
+  .qr-preview {
+    width: 80px;
+    height: auto;
+    border: 1px solid var(--gray-color);
+    border-radius: 4px;
+  }
 
-.delete-btn {
-  color: var(--third-color);
-  cursor: pointer;
-  font-weight: bold;
-  border: none;
-  background: none;
-  padding: 6px;
-}
-#json-output {
-  background-color: #f7f7f7;
-  border: 1px solid var(--gray-color);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-top: 2rem;
-  text-align: left;
-  max-height: 300px;
-  overflow: auto;
-}
+  .delete-btn {
+    color: var(--third-color);
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    background: none;
+    padding: 6px;
+  }
 
-#json-output h3 {
-  margin-top: 0;
-  color: var(--primary-color);
-}
+  #json-output {
+    background-color: #f7f7f7;
+    border: 1px solid var(--gray-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: left;
+    max-height: 300px;
+    overflow: auto;
+  }
 
-#json-box {
-  font-family: monospace;
-  font-size: 14px;
-  white-space: pre-wrap;
-  word-break: break-word;
-}  
-  </style>
+  #json-output h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+
+  #json-box {
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+</style>
+
+
+
 	
 </head>
 <body>
 
+	<header>
+  <img src="https://dolomitinordicski.com/fileadmin/templates/images/logo.svg" alt="DNS Logo">
+</header>
+	
   <main class="container">
     <h1 class="section-title">DNS QR CODE GENERATOR</h1>
     <p>Genera un QR che punta a un file redirect personalizzato<br>e visualizza anteprima, codice HTML e download.</p>
