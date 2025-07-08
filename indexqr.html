@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Dinamico – DNS Style</title>
+  <style>
+    :root {
+      --primary-color:   #0D4D5E;
+      --secondary-color: #AAD0D1;
+      --third-color:     #417483;
+      --white-color:     #FFFFFF;
+      --dark-color:      #313131;
+      --gray-color:      #DDDDDD;
+    }
+
+    html, body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 700;
+      margin: 0;
+      padding-top: 10vh;
+      background-color: var(--white-color);
+      color: var(--dark-color);
+      text-align: center;
+    }
+
+    h1.section-title {
+      font-size: 3rem;
+      background: linear-gradient(to right, #0D4D5E, #AAD0D1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid var(--gray-color);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #qr-code {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <h1 class="section-title">QR Dinamico – DNS Style</h1>
+    <p>Genera un QR che punta a un file redirect personalizzato <br> e scarica subito il file HTML da caricare su GitHub.</p>
+
+    <input type="text" id="redirect-name" placeholder="Nome file (es. redirect45)" /><br>
+    <input type="text" id="target-url" placeholder="Destinazione (es. https://esempio.com)" /><br>
+
+    <button onclick="generateQRCode()">Genera QR + Download HTML</button>
+
+    <div id="qr-code"></div>
+  </main>
+
+  <!-- QRCode.js semplificata e funzionante -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    function generateQRCode() {
+      const name = document.getElementById("redirect-name").value.trim();
+      const target = document.getElementById("target-url").value.trim();
+      const qrContainer = document.getElementById("qr-code");
+      qrContainer.innerHTML = "";
+
+      if (!name || !target) {
+        alert("Inserisci un nome file e una destinazione valida.");
+        return;
+      }
+
+      const baseURL = window.location.href.replace(/\/[^\/]*$/, "/");
+      const fullURL = baseURL + name + ".html";
+
+      new QRCode(qrContainer, {
+        text: fullURL,
+        width: 256,
+        height: 256,
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      createRedirectFile(name, target);
+      alert("QR creato e file HTML scaricato.\nOra carica il file sul tuo sito.");
+    }
+
+    function createRedirectFile(name, url) {
+      const content = `
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>${name}</title>
+  <script>window.location.href = "${url}";</script>
+</head>
+<body>
+  <p>Se non vieni reindirizzato, <a href="${url}">clicca qui</a>.</p>
+</body>
+</html>`.trim();
+
+      const blob = new Blob([content], { type: "text/html" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `${name}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+
+</body>
+</html>
